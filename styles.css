@@ -117,3 +117,7 @@ body{
 .sunrise-set img{
     width: 60px;
 }
+.weather-status{
+    padding-top: 40px;
+    font-size: 35px;
+}
