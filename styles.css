@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    padding: 0; font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background: rgb(178, 188, 250);
+    background-color: linear(rgb(178, 188, 250));
+}
+.card{
+    background-color: rgb(143, 158, 252);
+    width: 90%;
+    max-width: 470px;
+    color: aliceblue;
+    margin: 100px auto 0;
+    border-radius: 20px;
+    text-align: center;
+    padding: 40px 35px;
+}
+.searchbar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.searchbar input{
+    border:2px;
+    background-color: aliceblue;
+    color: black;
+    padding: 10px 25px;
+    height: 60px;
+    border-radius: 30px;
+    font-size: 18px;
+    width: 300px;
+}
+.searchbar button{
+    border:2px;
+    background-color: aliceblue;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.searchbar button:hover{
+    background-color: rgb(210, 220, 229);
+}
+.searchbar button img{
+    width: 32px;
+}
+.weather-icon{
+    width:170px;
+    margin-top: 30px;
+}
+.details{
+    display: flex;
+    justify-content:space-evenly;
+    margin-top: 50px;
+    padding-bottom: 20px;
+    align-items: center;
+}
+.weather h1{
+    font-size: 50px;
+    font-weight: 500;
+}
+.weather h2{
+    font-size: 45px;
+    margin-top: 10px;
+    font-weight: 400;
+}
+.col{
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+.col img{
+    width: 40px;
+    margin-right: 10px;
+}
+.humidity, .wind, .sunrise, .sunset{
+    font-size: 28px;
+    margin-top: 6px;
+}
+.weather{
+    display: none;
+}
+.error{
+    margin-left: 10px;
+    text-align: left;
+    margin-top: 15px;
+    color: white;
+    background-color:#ff0000;
+    font-size: 16px;
+    padding: 5px;
+    display: none;
+}
+#current-location-btn {
+    margin-left: 10px;
+    border:2px;
+    background-color: aliceblue;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+#current-location-btn:hover {
+    background-color: rgb(210, 220, 229);
+}
+#current-location-btn img {
+    width: 45px;
+}
+.sunrise-set{
+    display: grid;
+    margin-left: 120px;
+    gap:15px;
+}
+.sunrise-set img{
+    width: 60px;
+}
