@@ -8,7 +8,7 @@ body{
     background-color: linear(rgb(178, 188, 250));
 }
 .card{
-    background-color: rgb(143, 158, 252);
+    background: linear-gradient(rgb(143, 158, 252), rgb(37, 57, 185));
     width: 90%;
     max-width: 470px;
     color: aliceblue;
@@ -116,6 +116,7 @@ body{
 }
 .sunrise-set img{
     width: 60px;
+    filter: drop-shadow(0 0 10px yellow);
 }
 .weather-status{
     padding-top: 40px;
