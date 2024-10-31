@@ -73,6 +73,11 @@ body{
     align-items: center;
     text-align: left;
 }
+.cop{
+    display: flex;
+    gap:5px;
+    justify-content: center;
+}
 .col img{
     width: 40px;
     margin-right: 10px;
