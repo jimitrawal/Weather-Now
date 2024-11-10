@@ -127,3 +127,18 @@ body{
     padding-top: 40px;
     font-size: 35px;
 }
+
+@media (max-width: 425px) {
+    #current-location-btn{
+        border-radius: 50%;
+        height: 50px;
+    }
+    #srch{
+        border-radius: 50%;
+        height: 50px;
+        width:50px;
+        margin-left: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
