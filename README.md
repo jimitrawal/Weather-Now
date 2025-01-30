@@ -5,7 +5,7 @@ Weather Now is an immersive and dynamic JavaScript-based weather application tha
 <p>Day Theme</p>
 <img src="./images/Weather-Now-day.png"  />
 <p>Night Theme</p>
-<img src="./images/Weather-Now-day.png"  />
+<img src="./images/Weather-Now-night.png"  />
 
 ## Features
 
