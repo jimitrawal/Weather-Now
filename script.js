@@ -60,6 +60,8 @@ async function checkWeather(city){
                 
         const currentTime = data.dt;
         if(currentTime >= data.sys.sunrise && currentTime <= data.sys.sunset){
+            document.body.style.background = 'linear-gradient(rgb(104, 190, 233), #FFFFFF)';
+            document.querySelector(".card").style.background = 'linear-gradient(rgb(16, 162, 235),rgb(0, 94, 255))';
             if(data.weather[0].main === "Clouds"){
                 weatherIcon.src = "images/clouds.png" 
             }else if(data.weather[0].main === "Rain"){
@@ -74,6 +76,9 @@ async function checkWeather(city){
                 weatherIcon.src = "images/snow.png" 
             }
         }else if((currentTime > data.sys.sunrise && currentTime > data.sys.sunset) || (currentTime < data.sys.sunrise && currentTime < data.sys.sunset)){
+            document.body.style.background = 'linear-gradient(#0A2342, #000000)';
+            document.querySelector(".card").style.background = '#01274d';
+            document.querySelector(".card").style.background = '0 4px 8px rgba(0, 0, 0, 0.2)';
             if(data.weather[0].main === "Clouds"){
                weatherIcon.src = "images/cloud.png" 
             }else if(data.weather[0].main === "Rain"){
