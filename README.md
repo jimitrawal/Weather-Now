@@ -1,6 +1,6 @@
 # Weather Now
 Weather Now is an immersive and dynamic JavaScript-based weather application that provides real-time weather information for any city. It allows users to search for weather conditions, view the current temperature, humidity, wind speed, and check sunrise and sunset times.
-<p>(https://main--jimitrawal-weather-now.netlify.app)</p>
+<p>(https://jimitrawal-weathernow.netlify.app)</p>
 
 <p>Day Theme</p>
 <img src="./images/Weather-Now-day.png"  />
