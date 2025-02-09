@@ -66,14 +66,16 @@ async function checkWeather(city){
                 weatherIcon.src = "images/clouds.png" 
             }else if(data.weather[0].main === "Rain"){
                 weatherIcon.src = "images/rain.png" 
+            }else if(data.weather[0].main === "Thunderstorm"){
+                weatherIcon.src = "images/thunderstorm.png" 
             }else if(data.weather[0].main === "Drizzle"){
                 weatherIcon.src = "images/drizzle.png" 
             }else if(data.weather[0].main === "Clear"){
-                   weatherIcon.src = "images/clear.png"
-            }else if(data.weather[0].main === "Mist"){
-                weatherIcon.src = "images/mist.png" 
+                   weatherIcon.src = "images/clear.png" 
             }else if(data.weather[0].main === "Snow"){
                 weatherIcon.src = "images/snow.png" 
+            }else{
+                weatherIcon.src="images/fog-day.png"
             }
         }else if((currentTime > data.sys.sunrise && currentTime > data.sys.sunset) || (currentTime < data.sys.sunrise && currentTime < data.sys.sunset)){
             document.body.style.background = 'linear-gradient(#0A2342, #000000)';
@@ -82,15 +84,17 @@ async function checkWeather(city){
             if(data.weather[0].main === "Clouds"){
                weatherIcon.src = "images/cloud.png" 
             }else if(data.weather[0].main === "Rain"){
+                weatherIcon.src = "images/rainy-night-2.png" 
+            }else if(data.weather[0].main === "Thunderstorm"){
                 weatherIcon.src = "images/rainy-night-3.png" 
             }else if(data.weather[0].main === "Drizzle"){
                weatherIcon.src = "images/rainy-night-2.png" 
             }else if(data.weather[0].main === "Clear"){
                 weatherIcon.src = "images/moon.png" 
-            }else if(data.weather[0].main === "Mist"){
-                weatherIcon.src = "images/night-mist.png" 
             }else if(data.weather[0].main === "Snow"){
                 weatherIcon.src = "images/rainy-night.png" 
+            }else{
+                weatherIcon.src="images/fog-night.png"
             }
         }
     }
