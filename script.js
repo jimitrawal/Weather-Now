@@ -51,7 +51,7 @@ async function checkWeather(city){
         document.querySelector(".region").innerHTML = data.sys.country;
         document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
         document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
-        document.querySelector(".wind").innerHTML = data.wind.speed*2 + " km/h";
+        document.querySelector(".wind").innerHTML = Math.round(data.wind.speed*2) + " km/h";
         document.querySelector(".weather-status").innerHTML = data.weather[0].main;
         const sunriseTime = await getTime(data.coord.lat, data.coord.lon, "sunrise");
         const sunsetTime = await getTime(data.coord.lat, data.coord.lon, "sunset");
