@@ -38,65 +38,73 @@ async function getTime(lat,long,time){
 }
 
 async function checkWeather(city){
-    const response = await fetch(apiUrl + 'q=' + city + '&appid=' + apiKey + '&units=metric');
-    if(response.status == 404){
-        document.querySelector(".error").style.display = "block";
-        document.querySelector(".weather").style.display = "none";
-    }else{
-        document.querySelector(".error").style.display = "none";
-        document.querySelector(".weather").style.display = "block";
-        let data = await response.json();
-        
-        document.querySelector(".city").innerHTML = data.name;
-        document.querySelector(".region").innerHTML = data.sys.country;
-        document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
-        document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
-        document.querySelector(".wind").innerHTML = Math.round(data.wind.speed*2) + " km/h";
-        document.querySelector(".weather-status").innerHTML = data.weather[0].main;
-        const sunriseTime = await getTime(data.coord.lat, data.coord.lon, "sunrise");
-        const sunsetTime = await getTime(data.coord.lat, data.coord.lon, "sunset");
-        document.querySelector(".sunrise").innerHTML = sunriseTime + ' AM';
-        document.querySelector(".sunset").innerHTML = sunsetTime + ' PM';
-                
-        const currentTime = data.dt;
-        if(currentTime >= data.sys.sunrise && currentTime <= data.sys.sunset){
-            document.body.style.background = 'linear-gradient(rgb(104, 190, 233), #FFFFFF)';
-            document.querySelector(".card").style.background = 'linear-gradient(rgb(16, 162, 235),rgb(0, 94, 255))';
-            if(data.weather[0].main === "Clouds"){
-                weatherIcon.src = "images/clouds.png" 
-            }else if(data.weather[0].main === "Rain"){
-                weatherIcon.src = "images/rain.png" 
-            }else if(data.weather[0].main === "Thunderstorm"){
-                weatherIcon.src = "images/thunderstorm.png" 
-            }else if(data.weather[0].main === "Drizzle"){
-                weatherIcon.src = "images/drizzle.png" 
-            }else if(data.weather[0].main === "Clear"){
-                   weatherIcon.src = "images/clear.png" 
-            }else if(data.weather[0].main === "Snow"){
-                weatherIcon.src = "images/snow.png" 
-            }else{
-                weatherIcon.src="images/fog-day.png"
-            }
-        }else if((currentTime > data.sys.sunrise && currentTime > data.sys.sunset) || (currentTime < data.sys.sunrise && currentTime < data.sys.sunset)){
-            document.body.style.background = 'linear-gradient(#0A2342, #000000)';
-            document.querySelector(".card").style.background = '#01274d';
-            document.querySelector(".card").style.background = '0 4px 8px rgba(0, 0, 0, 0.2)';
-            if(data.weather[0].main === "Clouds"){
-               weatherIcon.src = "images/cloud.png" 
-            }else if(data.weather[0].main === "Rain"){
-                weatherIcon.src = "images/rainy-night-2.png" 
-            }else if(data.weather[0].main === "Thunderstorm"){
-                weatherIcon.src = "images/rainy-night-3.png" 
-            }else if(data.weather[0].main === "Drizzle"){
-               weatherIcon.src = "images/rainy-night-2.png" 
-            }else if(data.weather[0].main === "Clear"){
-                weatherIcon.src = "images/moon.png" 
-            }else if(data.weather[0].main === "Snow"){
-                weatherIcon.src = "images/rainy-night.png" 
-            }else{
-                weatherIcon.src="images/fog-night.png"
+    try {
+        const response = await fetch(apiUrl + 'q=' + city + '&appid=' + apiKey + '&units=metric');
+        if(response.status == 404){
+            document.querySelector(".error").style.display = "block";
+            document.querySelector(".error").innerHTML = "Invalid city name. Please check your spelling and try again.";
+            document.querySelector(".weather").style.display = "none";
+        }else{
+            document.querySelector(".error").style.display = "none";
+            document.querySelector(".weather").style.display = "block";
+            let data = await response.json();
+            
+            document.querySelector(".city").innerHTML = data.name;
+            document.querySelector(".region").innerHTML = data.sys.country;
+            document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
+            document.querySelector(".humidity").innerHTML = Math.round(data.main.humidity) + "%";
+            document.querySelector(".wind").innerHTML = Math.round(data.wind.speed*2) + " km/h";
+            document.querySelector(".weather-status").innerHTML = data.weather[0].main;
+            const sunriseTime = await getTime(data.coord.lat, data.coord.lon, "sunrise");
+            const sunsetTime = await getTime(data.coord.lat, data.coord.lon, "sunset");
+            document.querySelector(".sunrise").innerHTML = sunriseTime + ' AM';
+            document.querySelector(".sunset").innerHTML = sunsetTime + ' PM';
+                    
+            const currentTime = data.dt;
+            if(currentTime >= data.sys.sunrise && currentTime <= data.sys.sunset){
+                document.body.style.background = 'linear-gradient(rgb(104, 190, 233), #FFFFFF)';
+                document.querySelector(".card").style.background = 'linear-gradient(rgb(16, 162, 235),rgb(0, 94, 255))';
+                if(data.weather[0].main === "Clouds"){
+                    weatherIcon.src = "images/clouds.png" 
+                }else if(data.weather[0].main === "Rain"){
+                    weatherIcon.src = "images/rain.png" 
+                }else if(data.weather[0].main === "Thunderstorm"){
+                    weatherIcon.src = "images/thunderstorm.png" 
+                }else if(data.weather[0].main === "Drizzle"){
+                    weatherIcon.src = "images/drizzle.png" 
+                }else if(data.weather[0].main === "Clear"){
+                       weatherIcon.src = "images/clear.png" 
+                }else if(data.weather[0].main === "Snow"){
+                    weatherIcon.src = "images/snow.png" 
+                }else{
+                    weatherIcon.src="images/fog-day.png"
+                }
+            }else if((currentTime > data.sys.sunrise && currentTime > data.sys.sunset) || (currentTime < data.sys.sunrise && currentTime < data.sys.sunset)){
+                document.body.style.background = 'linear-gradient(#0A2342, #000000)';
+                document.querySelector(".card").style.background = '#01274d';
+                document.querySelector(".card").style.background = '0 4px 8px rgba(0, 0, 0, 0.2)';
+                if(data.weather[0].main === "Clouds"){
+                   weatherIcon.src = "images/cloud.png" 
+                }else if(data.weather[0].main === "Rain"){
+                    weatherIcon.src = "images/rainy-night-2.png" 
+                }else if(data.weather[0].main === "Thunderstorm"){
+                    weatherIcon.src = "images/rainy-night-3.png" 
+                }else if(data.weather[0].main === "Drizzle"){
+                   weatherIcon.src = "images/rainy-night-2.png" 
+                }else if(data.weather[0].main === "Clear"){
+                    weatherIcon.src = "images/moon.png" 
+                }else if(data.weather[0].main === "Snow"){
+                    weatherIcon.src = "images/rainy-night.png" 
+                }else{
+                    weatherIcon.src="images/fog-night.png"
+                }
             }
         }
+    } catch (error) {
+        console.error("Error in checkWeather:", error);
+        document.querySelector(".error").style.display = "block";
+        document.querySelector(".error").innerHTML = "An error occurred while fetching the weather data. Please try again.";
+        document.querySelector(".weather").style.display = "none";
     }
 }
         
